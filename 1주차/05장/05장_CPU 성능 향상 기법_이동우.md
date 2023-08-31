@@ -261,3 +261,18 @@
 - 대신 레지스터를 적극적으로 활용
     - CISC보다 레지스터 이용이 많고 범용 레지스터의 개수도 많다.
 - 명령어가 단순한만큼 프로그램에 실행되는 명령어의 개수가 많다.
+
+<br>
+
+---
+<br>
+
+### Reference
+[스레드 종류가 참 많죠? 하드웨어 스레드, OS 스레드, 네이티브 스레드, 커널 스레드, 유저 스레드, 그린 스레드까지 한번에 정리해서 알려드립니다!!](https://www.youtube.com/watch?v=vorIqiLM7jc&list=PLcXyemr8ZeoQOtSUjwaer0VMJSMfa-9G-&index=11)<br>
+[프로세스, 스레드, 멀티태스킹, 멀티스레딩, 멀티프로세싱, 멀티프로그래밍, 이 모든 것을 한 방에 깔끔하게 설명합니다!! 콘텐츠 퀄리티 만족하실 겁니다!](https://www.youtube.com/watch?v=QmtYKZC0lMU&list=PLcXyemr8ZeoQOtSUjwaer0VMJSMfa-9G-&index=1)<br>
+[[컴퓨터구조] CPU의 기본 구조](https://cs-ssupport.tistory.com/307)<br>
+[[컴퓨터구조] 명령어 파이프라이닝](https://cs-ssupport.tistory.com/320?category=518499)<br>
+[22. 컴퓨터구조 - 파이프라인과 병렬처리](https://devraphy.tistory.com/339)<br>
+[중앙처리장치(CPU) - 3 (CPU 명령어 사이클)](https://gamedevlog.tistory.com/71)<br>
+[슈퍼스칼라 & 파이프라이닝](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=sysganda&logNo=30164396312)<br>
+[컴퓨터의 구조: 명령어 파이프라인](https://www.robotstory.co.kr/raspberry/?vid=144)<br>
