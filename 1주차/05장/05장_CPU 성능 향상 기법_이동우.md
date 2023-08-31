@@ -10,6 +10,8 @@
 - 코어와 멀티코어
 - 스레드와 멀티스레드
 
+---
+
 ### 클럭 
 
 1. 컴퓨터 부품은 ‘클럭 신호’에 맞춰 일처리
@@ -41,6 +43,9 @@
 - 일반적으로 멀티 코어의 처리속도가 단일 코어보다 빠름.
 - 하지만 코어 수가 많다고 해도 처리할 연산과 명령어들을 분배하는 방식에 따라 연산 속도는 크게 달라짐.
 
+---
+<br>
+
 ### 스레드와 멀티스레드
 <br>
 
@@ -51,15 +56,24 @@
 
 ![hwsw](https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/0e53dd81-8540-4793-b88f-fce5cdd02922)
 
+<br>
 
 **하드웨어적 스레드**
 
 - ‘하나의 **코어**가 동시에 처리하는 명령어의 단위’, CPU에서 사용되는 스레드를 뜻함.
 
+<br>
+
 **멀티스레드 프로세서** 또는 **멀티스레드 CPU**
 
 - 하나의 코어로 여러 명령어(여러 스레드를 이용)를 동시에 처리하는 CPU
+- 코어에 스레드만큼의 레지스터 세트를 가지고 있음
     - 대표적으로 intel의  하이퍼스레딩
+
+|듀얼코어 4스레드 레지스터|
+|--|
+|<img width="418" alt="6" src="https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/2c8c1b3a-2ad4-4178-b7c5-e6989cefd0cb">|
+
 <br>
 
 **소프트웨어적 스레드**
@@ -77,36 +91,36 @@
     2. 맞춤법 맞는지 검사하는 기능
     3. 자동 저장 기능
     - 기능들을 작동시키는 코드를 각각의 스레드로 만들어 동시에 실행할 수 있음.
+<br>
 
-- 멀티스레드 프로세서
-    
-    싱글 코어 싱글 스레드
-    
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c8ed0d2f-d253-4da7-8436-940629ab0276/Untitled.png)
-    
-    듀얼코어 4스레드(하이퍼 스레딩)
-    
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a870aaed-e0e4-4761-834f-71bc4f87c520/Untitled.png)
-    
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a7fbd78d-0cfd-4141-accb-4f081b0d8bf5/Untitled.png)
-    
+**멀티스레드 프로세서**
+
+|싱글 코어 싱글 스레드|듀얼코어 4스레드(하이퍼 스레딩)|
+|--|--|
+|<img width="975" alt="3" src="https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/0fd89e77-f828-4192-a697-7917ed5ecfdb">|<img width="1052" alt="4" src="https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/27213744-211e-4942-b1e5-5b20f38da413">|
 
 - 2코어 4 스레드 cpu는 한 번에 네 개의 명령어를 처리 가능하여 쿼드 코어 스케줄링을 함.
 - 그래서 하드웨어 스레드를 논리 프로세서라고 부르기도 함.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7cfc5d40-776f-458f-bf93-7abff468e144/Untitled.png)
-
-레지스터 세트 : 프로그램 카운터, 스택 포인터, 데이터 버퍼 레지스터, 데이터 주소 레지스터 등
-
-## 5-2 명령어 병렬 처리기법
-
-클럭속도를 과하게 높이면 발열문제 발생.
-
-cpu를 어떻게 극한으로 짜낼까?
+|논리 프로세서|
+|--|
+|![5](https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/502023fd-0cb0-4e5c-a7c5-71b4af882955)|
 
 ---
+<br>
 
-### **명령어 파이프라인**
+## 5-2 명령어 병렬 처리기법
+- 명령어 파이프라인
+- 슈퍼스칼라
+- 비순차적 명령어 처리
+
+> 클럭속도를 과하게 높이면 발열문제 발생.
+> cpu를 어떻게 극한으로 짜낼까? => 명령어 파이프라인
+
+---
+<br>
+
+### 명령어 파이프라인
 
 - 시간적 병렬 프로세서 구조
 - 클럭 단위별 명령어 처리과정
@@ -118,69 +132,76 @@ cpu를 어떻게 극한으로 짜낼까?
     4. 결과 저장 (Write Back)
     - 책마다 과정을 나누는 기준이 판이하게 다름
     - 같은 단계가 겹치지만 않는 다면 cpu는 각 단계를 동시에 실행할 수 있음.
+<br>
 
-- 명령어 파이프라인을 사용하지 않으면
+- 명령어 파이프라인 사용 X
+<img width="584" alt="7" src="https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/ffdf6161-a191-46d9-a590-5fe5f10e8684">
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e74a76bc-dc7c-4264-9e9f-5291f29b0555/Untitled.png)
+- 명령어 파이프라인 사용 O
 
-- 명령어 파이프라인을 사용하면
+<img width="516" alt="8" src="https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/ee178141-2a8f-46cd-b789-d4862c5dc86f">
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1bfe2739-6814-41e6-9198-d473b2bf1512/Untitled.png)
     
-    - 명령어 파이프라인을 사용하면 적은 시간동안 더 많은 작업량을 처리할 수 있음.
-        - 파이프라인을 처리하는 도중 문제가 생기면 전체 연산과정에 문제가 생길 수 있음.
-        - 각기 다른 메모리 주소를 사용.
+  - 명령어 파이프라인을 사용하면 적은 시간동안 더 많은 작업량을 처리할 수 있음.
+    - 파이프라인을 처리하는 도중 문제가 생기면 전체 연산과정에 문제가 생길 수 있음.
+    - 각기 다른 메모리 주소를 사용하여 메모리 사용량이 높아짐.
+<br>
     
-    ### 파이프라인 위험
-    
+**파이프라인 위험**
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/16aac26d-15da-4a19-8a07-4b52bfc4ab1e/Untitled.png)
+<img width="314" alt="11" src="https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/f2500a97-e31e-4a52-9264-8e0cce7b96fb">
 
 1. 데이터 위험 
     - ‘데이터 의존성’에 의해 발생.
-    
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/99df8bce-05d4-4440-bd60-4fed72dae205/Untitled.png)
-    
+    ![12](https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/a45dffbd-9a81-4214-a49b-db2f797c78ad)
+
 2. 제어 위험
     - 분기 등으로 ‘프로그램 카운터의 갑작스러운 변화’에 의해 발생.
-    
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/51c971e0-86b3-4218-9dcf-2a3d18bd3583/Untitled.png)
+![13](https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/c6d7db99-f25c-4c9e-b70b-807b4a16269c)
+
     
 3. 구조적 위험
     - 서로 다른 명령어가 동시에 ALU, 레지스터 등 CPU부품 또는 메모리를 사용하려고 할 때,
     - 하드웨어가 병행 수행을 지원하지 않는 경우 자원 충돌이 발생.
+![14](https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/e11cca3b-797a-4c60-a139-66889082f23d)
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ee0346be-343d-4e4f-8816-f3fbab5385be/Untitled.png)
-    
+---
+<br>
 
 ### 슈퍼스칼라
 
 - 여러 개의 파이프라인 이용.
+![16](https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/da1ecded-ea99-4dfa-9370-cc96d2e722a1)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f6077b86-f415-463f-9f48-6c147096a9e2/Untitled.png)
+---
+<br>
 
 ### 비순차적 명령어 처리
 
 > OoOE: Out-of-order execution
-> 
-
-파이프라인의 중단을 방지하기 위해 명령어를 순차적으로 처리하지 않는 명령어 병렬 처리 기법
-
-= ‘합법적 새치기‘
+> 파이프라인의 중단을 방지하기 위해 명령어를 순차적으로 처리하지 않는 명령어 병렬 처리 기법
+**= ‘합법적 새치기‘**
 
 - 데이터 위험 같이 데이터간의 의존성이 있는 경우
 - 순서를 바꿔도 무방한 명령어를 먼저 실행
 - 처리가 끝나면 새치기
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e22297be-157e-4401-aa2a-ce3ab3bff12f/Untitled.png)
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/70dbfc9e-0d68-443c-b75d-bbb540dbdb87/Untitled.png)
-
-## 5-3 CISC & RISC
-
-파이프라이닝 하기 쉬운 명령어?
+|③은 ①,②에 데이터 의존|②까지 끝나고 ③진행|
+|--|--|
+|![16](https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/fc5ac737-bf63-45b2-9a1b-c7c4cb956635)|![17](https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/ef45bd37-9f98-4168-9a53-9ab2c442cba5)|
 
 ---
+<br>
+
+## 5-3 CISC & RISC
+- ISA(Instruction Set)
+- CISC
+- RISC
+
+> 파이프라이닝 하기 쉬운 명령어?
+
+---
+<br>
 
 ### ISA(Instruction Set)
 
@@ -190,7 +211,10 @@ cpu를 어떻게 극한으로 짜낼까?
     - Intel CPU : x86, x84-64 ISA
     - Apple CPU : ARM ISA
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/869e8f81-b179-45d4-9f48-a148bf172f9c/Untitled.png)
+|x86-65, ARM의 ISA|
+|--|
+|![21](https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/41247b79-5c02-4550-aef4-fd95875c401f)|
+
 
 - ISA가 다르면 명령어가 다름.
     - 제어장치가 명령어를 해석하는 방식
@@ -201,18 +225,18 @@ cpu를 어떻게 극한으로 짜낼까?
         같은 소스 코드로 이루어진 프로그램이라도 ISA가 다르면 
         
         CPU가 이해할 수 있는 명령어도 달라지고 어셈블리어도 달라짐.
-        
+
+---
+<br>        
 
 ### CISC
 
 > Complex Instruction Set Computer
-> 
-
-ex) Intel x-86, x86-64
+> ex) Intel x-86, x86-64
 
 **가변 길이 명령어**
+![22](https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/e2ca5e47-6804-4e6e-97bd-6c681eb45835)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3f16a0a8-2470-4564-ba4c-0c79b3d561e2/Untitled.png)
 
 - 명령어의 형태와 길이가 다양함.
     - 상대적으로 적은 명령어로도 프로그램을 실행 = 메모리 공간을 절약
@@ -221,7 +245,9 @@ ex) Intel x-86, x86-64
 - 다양한 명령어가 있지만 주로 사용되는 명령어는 일부분
     
     ⇒ 파이프라인을 만들기 어렵다.
-    
+
+---
+<br>    
 
 ### RISC
 
@@ -229,8 +255,8 @@ ex) Intel x-86, x86-64
 2. 적은 명령어의 종류
 3. 메모리 접근을 단순화
     1. 메모리를 직접 접근하는 명령어를 load, store 두 개로 제한
+<img width="261" alt="23" src="https://github.com/dongwooooooo/computer-architecture-and-operating-system/assets/137749703/361621e0-2495-4be1-8df0-d687d9910921">
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/432f4a51-a0e5-487d-8cae-608872d002c9/Untitled.png)
 
 - 대신 레지스터를 적극적으로 활용
     - CISC보다 레지스터 이용이 많고 범용 레지스터의 개수도 많다.
