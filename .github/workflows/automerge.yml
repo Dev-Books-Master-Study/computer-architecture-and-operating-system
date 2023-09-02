@@ -1,7 +1,7 @@
 name: automerge
 on:
   schedule:
-    - cron: '0 16 * * *'  # 한국 시간 오전 1시
+    cron: '30 16 * * *'
   
 jobs:
   automerge:
