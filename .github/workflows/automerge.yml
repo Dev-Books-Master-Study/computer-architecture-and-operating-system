@@ -1,7 +1,7 @@
 name: automerge
 on:
   schedule:
-    cron: '30 16 * * *'
+    - cron: '0 17 * * 6'
   
 jobs:
   automerge:
@@ -12,3 +12,4 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_LABELS: ""
+
