@@ -1,15 +1,16 @@
 name: automerge
 on:
   schedule:
-    - cron: '0 17 * * 6'
-  
+    - cron: '15 3 * * 0'
+
 jobs:
   automerge:
     runs-on: ubuntu-latest
     steps:
-      - name: automerge
-        uses: "pascalgn/automerge-action@v0.13.1"
+      - id: automerge
+        name: automerge
+        uses: "pascalgn/automerge-action@v0.15.6"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          MERGE_LABELS: ""
+
 
